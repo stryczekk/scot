@@ -1,0 +1,17 @@
+- pipeline: "[$BUDDY_REF] Tests"
+  folder: "Tests"
+  trigger_mode: "ON_EVERY_PUSH"
+  ref_name: "$BUDDY_REF"
+  ref_type: "BRANCH"
+  trigger_condition: "ALWAYS"
+  actions:
+  - action: "Execute: ls -al"
+    type: "BUILD"
+    working_directory: "/buddy/test"
+    docker_image_name: "library/ubuntu"
+    docker_image_tag: "16.04"
+    execute_commands:
+    - "ls -al"
+    mount_filesystem_path: "/buddy/test"
+    shell: "BASH"
+    trigger_condition: "ALWAYS"
